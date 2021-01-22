@@ -25,7 +25,7 @@ jobs:
     - name: Slash Command Dispatch
       uses: peter-evans/slash-command-dispatch@v1
       env:
-        TOKEN: ${{ steps.generate_token.outputs.token }}
+        TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
       with:
         token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
         reaction-token: ${{ secrets.GITHUB_TOKEN }}
