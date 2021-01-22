@@ -1,0 +1,20 @@
+{
+  "name": "forked-pr-workflow",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eduardoboucas/forked-pr-workflow.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eduardoboucas/forked-pr-workflow/issues"
+  },
+  "homepage": "https://github.com/eduardoboucas/forked-pr-workflow#readme"
+}
