@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: ok-to-test setup
-      uses: eduardoboucas/ok-to-test-action@v0
+      uses: eduardoboucas/ok-to-test-action@main
       with:
         appId: ${{ secrets.APP_ID }}
         appPrivateKey: ${{ secrets.PRIVATE_KEY }}
