@@ -21,6 +21,6 @@ jobs:
       run: npm test
       
     - name: ok-to-test teardown
-      uses: eduardoboucas/ok-to-test-action@v0
+      uses: eduardoboucas/ok-to-test-action@main
       with:
         finished: true
