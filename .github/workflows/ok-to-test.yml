@@ -1,31 +1,26 @@
-# If someone with write access comments "/ok-to-test" on a pull request, emit a repository_dispatch event
 name: Ok To Test
 
 on:
   issue_comment:
     types: [created]
+  pull_request:
+  repository_dispatch:
+    types: [ok-to-test-command]    
 
 jobs:
   ok-to-test:
     runs-on: ubuntu-latest
-    # Only run for PRs, not issue comments
-    if: ${{ github.event.issue.pull_request }}
     steps:
-    - name: Generate token
-      id: generate_token
-      uses: tibdex/github-app-token@v1
+    - name: ok-to-test setup
+      uses: eduardoboucas/ok-to-test-action@v0
       with:
-        app_id: ${{ secrets.APP_ID }}
-        private_key: ${{ secrets.PRIVATE_KEY }}
-
-    - name: Slash Command Dispatch
-      uses: peter-evans/slash-command-dispatch@v1
-      env:
-        TOKEN: ${{ steps.generate_token.outputs.token }}
+        appId: ${{ secrets.APP_ID }}
+        appPrivateKey: ${{ secrets.PRIVATE_KEY }}
+        
+    - name: Run tests
+      run: npm test
+      
+    - name: ok-to-test teardown
+      uses: eduardoboucas/ok-to-test-action@v0
       with:
-        token: ${{ env.TOKEN }}
-        reaction-token: ${{ secrets.GITHUB_TOKEN }}
-        issue-type: pull-request
-        commands: ok-to-test
-        named-args: true
-        permission: write
+        finished: true
